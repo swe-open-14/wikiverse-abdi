@@ -80,7 +80,9 @@ export const Page = (props) => {
   } else {
     return (
       <>
+      <div className='container'>
                <h3 onClick={() => handleTitleClick(props.page)}>{props.page.title}</h3>
+               </div>
 
       </>
     );
