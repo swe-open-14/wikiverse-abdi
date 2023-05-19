@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { PagesList } from './PagesList';
-import { Page } from './Page';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
@@ -24,21 +23,12 @@ export const App = () => {
 		fetchPages();
 	}, []);
 
-	const handleBackToWikiClick = () => {
-		setSelectedPage(null);
-	  };
-
 	return (
 		<main className=''>	
       <h1>WikiVerse</h1>
 	  <button>Add Article</button>
 	  <div className='mainContainer'>
-	  <PagesList pages={pages} setSelectedPage={setSelectedPage} />
-        {selectedPage && (
-    <Page page={selectedPage}
-            handleBackToWikiClick={handleBackToWikiClick}
-          />
-        )}
+			<PagesList pages={pages} />
 			</div>
 		</main>
 	)
