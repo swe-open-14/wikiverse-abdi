@@ -7,6 +7,7 @@ import apiURL from '../api';
 export const App = () => {
 
 	const [pages, setPages] = useState([]);
+	const [selectedPage, setSelectedPage] = useState(null);
 
 	async function fetchPages(){
 		try {

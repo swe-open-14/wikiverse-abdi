@@ -11,6 +11,10 @@ export const Page = (props) => {
   const [selectedPage, setSelectedPage] = useState(null);
 
 
+useEffect(() =>{
+  console.log(selectedPage)
+})
+
   // This useEffect makes a get request to the server to retreive the the user which has the corresponding ID to retreive their name
   useEffect(() => {
     async function fetchAuthorData() {
@@ -40,25 +44,36 @@ export const Page = (props) => {
   
     fetchTagData();
   }, [props.page.id]);
+
+  
   
   
   // This function/Event handler is for the <h3> elements so when a user clicks any of the titles/h3 that titles/h3 object will be the current page and be rendered
   
   const handleTitleClick = (page) => {
-    setSelectedPage(page);
-    console.log(page)
+    if (!selectedPage) {
+      setSelectedPage(page);
+      console.log(page)
+    }
   };
 
   // This is linked to the "back to wiki" button which makes pages null therefore hide any rendered info
   const handleBackToWikiClick = () => {
     // Event handler for the "Back to Wiki" button click
     setSelectedPage(null);
+    console.log(selectedPage)
   };
 
   // This checks if there is indeed a current page which has been selected and if so renders its corresponding information
   if (selectedPage) {
+
     return (
       <>
+      <div className='container'>
+               <h3 onClick={() => handleTitleClick(props.page)}>{props.page.title}</h3>
+               </div>
+               <div className='modalContainer'>
+      <div className='modal'>
         <h3>{selectedPage.title}</h3>
         <p className='bold'>Author: <span className='light'>{author.name}</span></p>
         <p className='bold'>Published: <span>{props.page.createdAt.slice(0, 10)}</span></p>
@@ -74,6 +89,8 @@ export const Page = (props) => {
           <p>No tags available</p>
         )}
         <button  onClick={handleBackToWikiClick}>Back to Wiki</button>
+        </div>
+        </div>
       </>
     );
     // Otherwise only render the titles/h3
@@ -81,9 +98,8 @@ export const Page = (props) => {
     return (
       <>
       <div className='container'>
-               <h3 onClick={() => handleTitleClick(props.page)}>{props.page.title}</h3>
+               <h3 onClick={() => { selectedPage ? null : handleTitleClick(props.page)}}>{props.page.title}</h3>
                </div>
-
       </>
     );
   }
