@@ -12,6 +12,54 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id/", async (req, res, next) => {
+  try {
+    const pageId = req.params.id;
+
+    // Find the page by ID
+    const page = await Page.findByPk(pageId);
+    if (!page) {
+      res.status(404).send("Page not found");
+      return;
+    }
+
+    // Retrieve the corresponding tag for the page
+
+    res.send(page);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+
+router.get("/:id/tag", async (req, res, next) => {
+  try {
+    const pageId = req.params.id;
+
+    // Find the page by ID
+    const page = await Page.findByPk(pageId);
+    if (!page) {
+      res.status(404).send("Page not found");
+      return;
+    }
+
+    // Retrieve the corresponding tag for the page
+    const tags = await page.getTags();
+
+    if (!tags) {
+      res.status(404).send("Tag not found");
+      return;
+    }
+
+    res.send(tags);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+
 // POST /wiki
 router.post("/", async (req, res, next) => {
   try {

@@ -8,3 +8,25 @@ main {
   padding: 1rem;
   height: 100vh;
 }
+
+
+.border{
+  border: solid black 2px
+
+}
+
+.bold{
+  font-weight: bold;
+  font-size: large;
+}
+
+.light{
+  font-weight: lighter;
+  
+}
+
+.noStyle{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
