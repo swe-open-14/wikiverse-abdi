@@ -23,10 +23,12 @@ export const App = () => {
 	}, []);
 
 	return (
-		<main>	
+		<main className=''>	
       <h1>WikiVerse</h1>
-			<h2>An interesting 📚</h2>
+	  <button>Add Article</button>
+	  <div className='mainContainer'>
 			<PagesList pages={pages} />
+			</div>
 		</main>
 	)
 }

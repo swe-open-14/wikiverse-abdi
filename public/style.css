@@ -30,3 +30,44 @@ main {
   padding: 0;
   margin: 0;
 }
+
+#root{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main{
+  width: 100%;
+  height: 100%;
+}
+
+.mainContainer{
+  width: 90%;
+  height: 100%;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20 auto;
+}
+
+.container{
+  width: 40%;
+  height: 250px;
+  background-color: rgb(110, 119, 127);
+  margin: 10px;
+  padding: 50px 50px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+}
+
+h3{
+  background-color: red;
+  font-size: 30px;
+}
