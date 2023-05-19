@@ -1,8 +1,12 @@
+const { db } = require('.././db')
 const express = require("express");
-const router = express.Router();
-
+const app = express();
 // different model routers
-router.use('/wiki', require('./wiki'));
-router.use('/users', require('./users'));
 
-module.exports = router;
+const pagesRouter = require("./wiki");
+const userRouter = require("./users");
+
+app.use('/wiki', pagesRouter);
+app.use('/users', userRouter);
+
+module.exports = app;
